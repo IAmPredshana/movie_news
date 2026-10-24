@@ -1,0 +1,26 @@
+.main_container_info
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    transition: all 0.3s;
+    background-color: transparent;
+    border-radius: 10px;
+    padding-inline: 10px;
+    color: black;
+    
+}
+
+.main_container_info:hover
+{
+    background-color: rgb(69, 69, 69);
+    outline: 1px solid white;
+    color: white;
+}
+
+.name_user
+{
+    text-decoration: none;
+}

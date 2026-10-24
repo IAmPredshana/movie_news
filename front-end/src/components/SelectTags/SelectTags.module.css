@@ -1,0 +1,37 @@
+.container_element_tag
+{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    background-color: rgba(0, 183, 0, 0.442);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.selected
+{
+    background-color: rgba(248, 18, 18, 0.434);
+}
+
+.btn
+{
+    margin-left: 5px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+
+}
+
+.remove_btn
+{
+    background-color: red;
+    color: white;
+}
+
+.add_btn
+{
+    background-color: green;
+    color: white;
+}

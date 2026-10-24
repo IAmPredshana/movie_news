@@ -1,0 +1,251 @@
+.eventFormContainer {
+    /* background-color: #fff; */
+    border-radius: 8px;
+    padding: 25px;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    max-width: 1000px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.eventForm {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+.formSidebar {
+    flex: 1;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e1e1e1;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e1e1;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 300px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.formRow {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.formRow .formGroup {
+    flex: 1;
+}
+
+.formActions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btnPrimary {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.btnPrimary:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.btnPrimary:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.btnSecondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.btnSecondary:hover {
+    background-color: #5a6268;
+}
+
+.alertError {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.alertWarning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+    width: 100%;
+}
+
+.charCount {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666;
+    text-align: right;
+}
+
+.btn_back
+{
+    background-color: red;
+    padding-inline: 10px;
+    padding-block: 10px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.btn_back:hover
+{
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .eventFormContainer {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .eventForm {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .formSidebar,
+    .formContent {
+        max-width: 100%;
+    }
+
+    .formRow {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btnPrimary {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .eventFormContainer {
+        padding: 15px;
+    }
+
+    .input,
+    .textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .btnPrimary {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

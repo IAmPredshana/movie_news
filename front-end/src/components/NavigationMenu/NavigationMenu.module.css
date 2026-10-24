@@ -1,0 +1,32 @@
+.main_container_nav_menu
+{
+
+}
+
+.container_fir_li{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+}
+
+.elem_li
+{
+    list-style: none;
+
+    background-color: #343a40;
+    padding: 5px;
+    border-radius: 5px;
+
+    transition: all 0.3s;
+}
+
+.elem_link
+{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.elem_li:hover
+{
+    background-color: #ba181b;
+}

@@ -1,0 +1,291 @@
+.main_container_edit_article
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_enter_info
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-block: 25px;
+}
+
+.additional_info
+{
+    display: flex;
+    flex-direction: column;
+    min-width: 40%;
+}
+
+.additional_info_inputs
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.additional_info_btn
+{
+    align-self: center;
+    margin-bottom: 15px;
+}
+
+.text_news
+{
+    display: flex;
+    flex-direction: column;
+    min-width: 40%;
+}
+
+.el_input
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.title_info,
+.textarea_info
+{
+    width: 90%;
+}
+
+.main_container_tags
+{
+    background-color: rgb(169, 169, 169);
+    display: flex;
+    justify-content: space-around;
+    width: 95%;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.container_current_tags
+{
+    background-color: rgb(221, 221, 221);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.container_all_tags
+{
+    background-color: rgb(221, 221, 221);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.auth_message,
+.loading_message {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.auth_message button,
+.loading_message button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.auth_message button:hover {
+    background-color: #0056b3;
+}
+
+.btn_back
+{
+    background-color: rgb(251, 25, 25);
+    color: white;
+    padding-inline: 10px;
+    padding-block: 5px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin-bottom: 20px;
+}
+
+.btn_back:hover
+{
+    opacity: 0.7;
+}
+
+/* Стили для изображений */
+.current_image,
+.image_preview {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #dee2e6;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove_image_btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.remove_image_btn:hover {
+    background-color: #c82333;
+}
+
+.file_input {
+    margin-bottom: 10px;
+}
+
+.file_hint {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+/* Стили для тегов */
+.selected_tags_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.selected_tag {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+}
+
+.remove_tag_btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.remove_tag_btn:hover {
+    color: #ffcccc;
+}
+
+.no_tags {
+    color: #6c757d;
+    font-style: italic;
+    margin: 10px 0;
+}
+
+.tags_grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+/* Счетчики символов */
+.char_count_small,
+.char_count {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+.char_count {
+    align-self: flex-end;
+}
+
+/* Сообщение об отсутствии изменений */
+.no_changes_message {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    color: #6c757d;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Кнопка сохранения */
+.additional_info_btn button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.additional_info_btn button:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.additional_info_btn button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.additional_info_btn button.loading {
+    background-color: #6c757d;
+}
+
+/* Текстовые поля */
+.text_label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.main_textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.main_textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.title_info {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.title_info:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}

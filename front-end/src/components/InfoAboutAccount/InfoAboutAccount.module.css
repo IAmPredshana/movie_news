@@ -1,0 +1,338 @@
+.main_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Общие стили для секций */
+.section {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    margin-bottom: 24px;
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
+
+.sectionHeader {
+    margin-bottom: 20px;
+}
+
+.sectionHeader h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Левый столбец */
+.leftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Возможности аккаунта */
+.features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.featureBtn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    text-align: center;
+}
+
+.featureBtn:hover {
+    background: #0056b3;
+}
+
+.featuresDescription {
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: 4px;
+}
+
+.featuresDescription p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Статьи */
+.content {
+    min-height: 400px;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    color: #666;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+.emptyState h3 {
+    margin: 0 0 12px 0;
+    color: #333;
+    font-size: 1.25rem;
+}
+
+.emptyState p {
+    margin: 0 0 24px 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.primaryBtn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.primaryBtn:hover {
+    background: #0056b3;
+}
+
+.articlesList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.articleCard {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: start;
+}
+
+.articleInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.articleTitle {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.articleDescription {
+    margin: 0;
+    color: #666;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.articleMeta {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    color: #888;
+}
+
+.articleDate {
+    font-size: 13px;
+    color: #888;
+}
+
+.articleTags {
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+}
+
+.articleActions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 120px;
+}
+
+.editBtn,
+.deleteBtn {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: 1px solid;
+    text-align: center;
+}
+
+.editBtn {
+    color: white;
+    background-color: blue;
+}
+
+.editBtn:hover {
+    background: rgb(1, 1, 201);
+}
+
+.deleteBtn {
+    color: white;
+    background-color: red;
+}
+
+.deleteBtn:hover {
+    background: rgb(199, 1, 1);
+    color: white;
+}
+
+/* Правый столбец */
+.rightColumn {
+    position: sticky;
+    top: 20px;
+}
+
+.accountInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.infoItem {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 16px;
+}
+
+.infoItem:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.infoLabel {
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+}
+
+.infoValue {
+    color: #333;
+    font-weight: 500;
+}
+
+.logoutSection {
+    display: flex;
+    justify-content: center;
+}
+
+.logoutBtn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    width: 100%;
+}
+
+.logoutBtn:hover {
+    background: rgb(199, 2, 2);
+}
+
+/* Адаптивность */
+@media (max-width: 968px) {
+    .main_container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .rightColumn {
+        position: static;
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .main_container {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .articleCard {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .articleActions {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .editBtn,
+    .deleteBtn {
+        flex: 1;
+    }
+
+    .articleMeta {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sectionHeader h2 {
+        font-size: 1.25rem;
+    }
+
+    .features {
+        gap: 8px;
+    }
+
+    .featureBtn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}

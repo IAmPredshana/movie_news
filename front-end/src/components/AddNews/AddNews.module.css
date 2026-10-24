@@ -1,0 +1,235 @@
+
+.main_container_add_news {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container_enter_info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding-block: 25px;
+}
+
+.additional_info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 400px;
+}
+
+.text_news {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 600px;
+}
+
+.el_input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.el_input label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.title_info {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e1e1e1;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.title_info:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.main_textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e1e1;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 300px;
+    transition: border-color 0.3s;
+}
+
+.main_textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.char_count {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666;
+    text-align: right;
+}
+
+.file_input {
+    width: 100%;
+    padding: 8px;
+    border: 2px dashed #e1e1e1;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+}
+
+.file_hint {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.image_preview {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e8f5e8;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 8px;
+    width: 100%;
+}
+
+.remove_image_btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.remove_image_btn:hover {
+    background-color: #c82333;
+}
+
+.additional_info_btn {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.additional_info_btn button:first-child {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.additional_info_btn button:first-child:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.additional_info_btn button:first-child:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.additional_info_btn button:first-child.loading {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.auth_message {
+    text-align: center;
+    padding: 40px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+}
+
+.auth_message button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.auth_message button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .container_enter_info {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .additional_info,
+    .text_news {
+        max-width: 100%;
+    }
+    
+    .additional_info_btn {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .clear_btn {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+.clear_btn
+{
+    background-color: red;
+    padding-inline: 10px;
+    padding-block: 15px;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.clear_btn:hover
+{
+    opacity: 0.5;
+}
+
+.btn_back
+{
+    background-color: red;
+    padding-inline: 10px;
+    padding-block: 10px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.btn_back:hover
+{
+    opacity: 0.5;
+}
