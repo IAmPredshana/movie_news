@@ -1,3 +1,16 @@
+.main{
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.mainContainerTitle{
+    text-align: center;
+    color: white;
+    font-family: monospace;
+    font-size: 65px;
+    letter-spacing: -0.25em; /* ≈ -1.3px при 65px */
+}
 
 .container {
     max-width: 800px;
@@ -6,7 +19,7 @@
 }
 
 .backButton {
-    background: none;
+    background: white;
     border: 1px solid #ddd;
     padding: 8px 16px;
     border-radius: 4px;

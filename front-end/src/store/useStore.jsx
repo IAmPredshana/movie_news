@@ -6,7 +6,7 @@ export const ROLES = {
   CINEMA_COMPANY: 'CinemaCompany'
 }
 
-const API_BASE_URL = '/api';
+const API_BASE_URL = 'http://localhost:3000/api'
 
 const useAuthStore = create(
   persist(
@@ -25,7 +25,7 @@ const useAuthStore = create(
             headers: { 
               'Content-Type': 'application/json',
             },
-            // credentials: 'include',
+            credentials: 'include',
             body: JSON.stringify({ email, password })
           });
           
@@ -224,13 +224,14 @@ const useAuthStore = create(
         set({ isLoading: true, error: null });
         
         try {
-          const formData = new FormData();
-          formData.append('file', file);
-
           const response = await fetch(`${API_BASE_URL}/users/avatar`, {
             method: 'POST',
             credentials: 'include',
-            body: formData
+            headers: {
+              'X-Filename': encodeURIComponent(file.name),
+              'Content-Type': 'application/octet-stream'
+            },
+            body: file
           });
           
           let data = {};
@@ -307,12 +308,12 @@ const useAuthStore = create(
 
       isCompany: () => {
         const { user } = get();
-        return user?.role === ROLES.CINEMA_COMPANY || user?.Role === ROLES.CINEMA_COMPANY;
+        return user?.role === 1;
       },
 
       isUser: () => {
         const { user } = get();
-        return user?.role === ROLES.USER || user?.Role === ROLES.USER;
+        return user?.role === 0;
       },
 
       getUserProfile: async (username) => {
@@ -473,13 +474,14 @@ const useAuthStore = create(
         set({ isLoading: true, error: null });
         
         try {
-          const formData = new FormData();
-          formData.append('file', file);
-
           const response = await fetch(`${API_BASE_URL}/articles/${articleId}/image`, {
             method: 'POST',
             credentials: 'include',
-            body: formData
+            headers: {
+              'X-Filename': encodeURIComponent(file.name),
+              'Content-Type': 'application/octet-stream'
+            },
+            body: file
           });
 
           let data = {};

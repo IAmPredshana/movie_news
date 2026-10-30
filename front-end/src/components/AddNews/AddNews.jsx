@@ -126,7 +126,7 @@ export default function AddNews() {
                 }
             }
 
-            alert('✅ Статья успешно создана!')
+            alert('Статья успешно создана!')
             
             clearForm()
                 

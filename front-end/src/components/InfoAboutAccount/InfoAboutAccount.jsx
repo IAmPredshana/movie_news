@@ -22,9 +22,8 @@ export default function InfoAboutAccount() {
         setIsLoading(true);
         try {
             const result = await getArticles({ username: user.name, page: 1, pageSize: 50 });
-            
             if (result.success) {
-                const articles = result.data?.articles?.result || [];
+                const articles = result.data?.articles || [];
                 
                 const myArticles = articles.filter(article => 
                     article.author?.id === user.id || 

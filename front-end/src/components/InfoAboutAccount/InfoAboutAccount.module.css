@@ -8,7 +8,7 @@
     align-items: start;
 }
 
-/* Общие стили для секций */
+/* стили для секций */
 .section {
     background: white;
     border-radius: 8px;
@@ -33,14 +33,14 @@
     font-weight: 600;
 }
 
-/* Левый столбец */
+/* левый столбец */
 .leftColumn {
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
 
-/* Возможности аккаунта */
+/* возможности аккаунта */
 .features {
     display: flex;
     flex-direction: column;
@@ -78,7 +78,7 @@
     line-height: 1.5;
 }
 
-/* Статьи */
+/* статьи */
 .content {
     min-height: 400px;
 }
@@ -220,7 +220,7 @@
     color: white;
 }
 
-/* Правый столбец */
+/* правый столбец */
 .rightColumn {
     position: sticky;
     top: 20px;
@@ -278,7 +278,7 @@
     background: rgb(199, 2, 2);
 }
 
-/* Адаптивность */
+
 @media (max-width: 968px) {
     .main_container {
         grid-template-columns: 1fr;

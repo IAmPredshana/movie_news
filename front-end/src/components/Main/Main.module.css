@@ -14,7 +14,8 @@
 }
 
 .articleImage{
-    width: 500px;
+    width: 250px;
+    border-radius: 15px;
 }
 
 .title {
@@ -35,7 +36,7 @@
     border-radius: 8px;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
     transition: box-shadow 0.3s ease;
 }
 

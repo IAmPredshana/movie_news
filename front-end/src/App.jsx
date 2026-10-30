@@ -7,7 +7,7 @@ import Header from './components/Header/Header'
 import Main from './components/Main/Main'
 import News from './components/News/News'
 import Calendar from './components/Calendar/Calendar'
-import DayInCalendar from './components/DayInCalendar/DayInCalendar' // ← ДОБАВЬ
+import DayInCalendar from './components/DayInCalendar/DayInCalendar'
 import Login from './components/Login/Login'
 import Register from './components/Register/Register'
 import InfoAboutAccount from './components/InfoAboutAccount/InfoAboutAccount'

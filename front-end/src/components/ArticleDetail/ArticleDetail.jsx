@@ -69,10 +69,10 @@ export default function ArticleDetail() {
         try {
             let result;
             
-            // Сохраняем текущее состояние для отката
+            // сохраняем текущее состояние для отката
             const previousArticleState = { ...article };
             
-            // Оптимистичное обновление UI
+            // оптимистичное обновление интерфейса
             setArticle(prev => {
                 if (!prev) return prev;
                 
@@ -97,13 +97,13 @@ export default function ArticleDetail() {
             console.log('Результат действия:', result);
             
             if (!result.success) {
-                // Если запрос не удался, откатываем изменения
+                // если запрос не удался, откатываем изменения
                 setArticle(previousArticleState);
                 throw new Error(result.error || 'Ошибка при оценке статьи');
             }
 
-            // Не вызываем fetchArticle() - используем оптимистичное обновление
-            // Можно обновить только счетчики из ответа, если они есть
+            // не вызываем fetchArticle() - используем оптимистичное обновление
+            // можно обновить только счетчики из ответа, если они есть
             if (result.data) {
                 setArticle(prev => {
                     if (!prev) return prev;
@@ -188,7 +188,7 @@ export default function ArticleDetail() {
                 return updatedArticle;
             });
             
-            // Очищаем форму
+            // очищаем форму
             setNewComment('');
             setShowCommentForm(false);
             
@@ -196,7 +196,7 @@ export default function ArticleDetail() {
             console.error('Ошибка:', err);
             setCommentError(err.message);
             
-            // Откатываем изменения в случае ошибки
+            // откатываем изменения в случае ошибки
             setArticle(prev => {
                 if (!prev) return prev;
                 
@@ -214,31 +214,31 @@ export default function ArticleDetail() {
         }
     };
 
-    // Отмена комментария
+    // отмена комментария
     const handleCancelComment = () => {
         setNewComment('');
         setCommentError('');
         setShowCommentForm(false);
     };
 
-    // Обновление статьи при изменении ID
+    // обновление статьи при изменении id
     useEffect(() => {
         if (id) {
             fetchArticle();
         }
     }, [id]);
 
-    // Кнопка назад
+    //  кнопка назад
     const goBack = () => {
         navigate(-1);
     };
 
-    // Перезагрузка статьи
+    // перезагрузка статьи
     const handleRetry = () => {
         fetchArticle();
     };
 
-    // Состояния загрузки
+    // загрузка
     if (loading) {
         return (
             <div className={styles.container}>
@@ -250,7 +250,7 @@ export default function ArticleDetail() {
         );
     }
 
-    // Состояние ошибки
+    // ошибка ошибки
     if (error) {
         return (
             <div className={styles.container}>
@@ -268,7 +268,7 @@ export default function ArticleDetail() {
         );
     }
 
-    // Статья не найдена
+    // статья не найдена
     if (!article) {
         return (
             <div className={styles.container}>
@@ -289,273 +289,280 @@ export default function ArticleDetail() {
     const comments = article.comments || [];
 
     return (
-        <div className={styles.container}>
-            {/* Кнопка назад */}
-            <button className={styles.backButton} onClick={goBack}>
-                ← Назад к списку статей
-            </button>
-            
-            {/* Основной контент статьи */}
-            <article className={styles.article}>
-                {/* Заголовок и мета-информация */}
-                <header className={styles.header}>
-                    <h1 className={styles.title}>{article.title}</h1>
-                    
-                    <div className={styles.metaInfo}>
-                        {/* Автор */}
-                        <div className={styles.authorSection}>
-                            {article.author?.avatar && (
-                                <img 
-                                    src={article.author.avatar} 
-                                    alt={`Аватар ${article.author.userName}`}
-                                    className={styles.avatar}
-                                    onError={(e) => {
-                                        e.target.style.display = 'none';
-                                    }}
-                                />
-                            )}
-                            <div className={styles.authorInfo}>
-                                <div className={styles.authorName}>
-                                    {article.author?.userName || 'Неизвестный автор'}
-                                </div>
-                                <div className={styles.publishDate}>
-                                    Опубликовано: {new Date(article.createdAt).toLocaleDateString('ru-RU', {
-                                        year: 'numeric',
-                                        month: 'long',
-                                        day: 'numeric'
-                                    })}
-                                </div>
-                            </div>
-                        </div>
+        <div className={styles.main} style={{backgroundImage: `url(${article.image})`}}>
+            <div className={styles.mainContainerTitle}>
+                <h1 className={styles.mainTitle}>{article.title}</h1>
+            </div>
+            <div className={styles.container}>
+                {/* btn назад */}
+                <button className={styles.backButton} onClick={goBack}>
+                    ← Назад к списку статей
+                </button>
+
+                
+                {/* основной контент статьи */}
+                <article className={styles.article}>
+                    {/* название и инфа */}
+                    <header className={styles.header}>
+                        <h1 className={styles.title}>{article.title}</h1>
                         
-                        {/* Статистика */}
-                        <div className={styles.stats}>
-                            <div className={styles.statItem}>
-                                <span className={styles.statIcon}>👁️</span>
-                                <span className={styles.statValue}>{article.viewCount || 0}</span>
-                            </div>
-                            <div className={styles.statItem}>
-                                <span className={styles.statIcon}>❤️</span>
-                                <span className={styles.statValue}>{article.likesCount || 0}</span>
-                            </div>
-                            <div className={styles.statItem}>
-                                <span className={styles.statIcon}>💬</span>
-                                <span className={styles.statValue}>{article.commentsCount || 0}</span>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-
-                {/* Изображение статьи */}
-                {article.image && (
-                    <div className={styles.articleImage}>
-                        <img 
-                            src={article.image} 
-                            alt={article.title}
-                            className={styles.image}
-                            onError={(e) => {
-                                e.target.style.display = 'none';
-                            }}
-                        />
-                    </div>
-                )}
-
-                {/* Теги */}
-                {article.tags && article.tags.length > 0 && (
-                    <div className={styles.tags}>
-                        {article.tags.map((tag, index) => (
-                            <span key={index} className={styles.tag}>#{tag}</span>
-                        ))}
-                    </div>
-                )}
-
-                {/* Содержание статьи */}
-                <div className={styles.content}>
-                    {article.content.split('\n').map((paragraph, index) => (
-                        paragraph.trim() ? (
-                            <p key={index}>{paragraph}</p>
-                        ) : (
-                            <br key={index} />
-                        )
-                    ))}
-                </div>
-
-                {/* Футер статьи */}
-                <footer className={styles.footer}>
-                    {/* Блок лайка */}
-                    <div className={styles.likeSection}>
-                        <button 
-                            className={`${styles.likeButton} ${
-                                article.isLiked ? styles.liked : ''
-                            } ${likeLoading ? styles.loading : ''}`}
-                            onClick={handleLikeAction}
-                            disabled={!isAuthenticated || likeLoading || isLoading}
-                            title={article.isLiked ? "Убрать лайк" : "Поставить лайк"}
-                        >
-                            {likeLoading ? (
-                                <span className={styles.likeLoading}></span>
-                            ) : article.isLiked ? (
-                                <span className={styles.likeIcon}>❤️</span>
-                            ) : (
-                                <span className={styles.likeIcon}>🤍</span>
-                            )}
-                            
-                            <span className={styles.likeText}>
-                                {likeLoading ? 'Загрузка...' : 
-                                 article.isLiked ? 'Убрать лайк' : 'Оценить статью'}
-                            </span>
-                        </button>
-                        
-                        {!isAuthenticated && (
-                            <div className={styles.authHint}>
-                                <span className={styles.loginHint}>
-                                    Войдите, чтобы оценить статью
-                                </span>
-                            </div>
-                        )}
-                    </div>
-                </footer>
-
-                <section className={styles.commentsSection}>
-                    <div className={styles.commentsHeader}>
-                        <h3 className={styles.commentsTitle}>
-                            Комментарии {article.commentsCount > 0 && 
-                            `(${article.commentsCount})`}
-                        </h3>
-                        
-                        {isAuthenticated && (
-                            <button 
-                                className={styles.addCommentButton}
-                                onClick={() => setShowCommentForm(!showCommentForm)}
-                            >
-                                {showCommentForm ? '✕ Отмена' : '+ Добавить комментарий'}
-                            </button>
-                        )}
-                    </div>
-
-    
-                    {showCommentForm && isAuthenticated && (
-                        <form className={styles.commentForm} onSubmit={handleAddComment}>
-                            <div className={styles.commentFormHeader}>
-                                <h4>Ваш комментарий</h4>
-                                {user?.avatar_url && (
+                        <div className={styles.metaInfo}>
+                            {/* автор */}
+                            <div className={styles.authorSection}>
+                                {article.author?.avatar && (
                                     <img 
-                                        src={user.avatar_url} 
-                                        alt="Ваш аватар"
-                                        className={styles.currentUserAvatar}
+                                        src={article.author.avatar} 
+                                        alt={`Аватар ${article.author.userName}`}
+                                        className={styles.avatar}
+                                        onError={(e) => {
+                                            e.target.style.display = 'none';
+                                        }}
                                     />
                                 )}
+                                <div className={styles.authorInfo}>
+                                    <div className={styles.authorName}>
+                                        {article.author?.userName || 'Неизвестный автор'}
+                                    </div>
+                                    <div className={styles.publishDate}>
+                                        Опубликовано: {new Date(article.createdAt).toLocaleDateString('ru-RU', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric'
+                                        })}
+                                    </div>
+                                </div>
                             </div>
                             
-                            <textarea
-                                className={styles.commentTextarea}
-                                value={newComment}
-                                onChange={(e) => {
-                                    setNewComment(e.target.value);
-                                    setCommentError('');
+                            {/* просмотры, лайки, комменты */}
+                            <div className={styles.stats}>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statIcon}>👁️‍🗨️</span>
+                                    <span className={styles.statValue}>{article.viewCount || 0}</span>
+                                </div>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statIcon}>❤️</span>
+                                    <span className={styles.statValue}>{article.likesCount || 0}</span>
+                                </div>
+                                <div className={styles.statItem}>
+                                    <span className={styles.statIcon}>🗨️</span>
+                                    <span className={styles.statValue}>{article.commentsCount || 0}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    {/* картинка */}
+                    {article.image && (
+                        <div className={styles.articleImage}>
+                            <img 
+                                src={article.image} 
+                                alt={article.title}
+                                className={styles.image}
+                                onError={(e) => {
+                                    e.target.style.display = 'none';
                                 }}
-                                placeholder="Напишите ваш комментарий..."
-                                rows="4"
-                                maxLength="1000"
-                                disabled={commentLoading}
                             />
-                            
-                            {commentError && (
-                                <div className={styles.commentError}>{commentError}</div>
-                            )}
-                            
-                            <div className={styles.commentFormActions}>
-                                <div className={styles.commentLength}>
-                                    {newComment.length}/1000 символов
-                                </div>
-                                <div className={styles.commentButtons}>
-                                    <button 
-                                        type="button"
-                                        className={styles.cancelButton}
-                                        onClick={handleCancelComment}
-                                        disabled={commentLoading}
-                                    >
-                                        Отмена
-                                    </button>
-                                    <button 
-                                        type="submit"
-                                        className={styles.submitButton}
-                                        disabled={commentLoading || !newComment.trim()}
-                                    >
-                                        {commentLoading ? 'Отправка...' : 'Отправить'}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     )}
 
-                    {!isAuthenticated && (
-                        <div className={styles.commentAuthPrompt}>
-                            <p>Войдите в систему, чтобы оставить комментарий</p>
-                            <button 
-                                className={styles.loginButton}
-                                onClick={() => navigate('/login')}
-                            >
-                                Войти
-                            </button>
-                        </div>
-                    )}
-                    
-                    {/* Список комментариев */}
-                    {comments.length > 0 ? (
-                        <div className={styles.commentsList}>
-                            {comments.map(comment => (
-                                <div 
-                                    key={comment.id} 
-                                    className={styles.comment}
-                                >
-                                    <div className={styles.commentHeader}>
-                                        <div className={styles.commentAuthor}>
-                                            {comment.author?.avatar && (
-                                                <img 
-                                                    src={comment.author.avatar} 
-                                                    alt={`Аватар ${comment.author.userName}`}
-                                                    className={styles.commentAvatar}
-                                                    onError={(e) => {
-                                                        e.target.style.display = 'none';
-                                                    }}
-                                                />
-                                            )}
-                                            <div className={styles.commentAuthorInfo}>
-                                                <span className={styles.commentAuthorName}>
-                                                    {comment.author?.userName || 'Аноним'}
-                                                </span>
-                                                <span className={styles.commentDate}>
-                                                    {new Date(comment.createdAt).toLocaleDateString('ru-RU', {
-                                                        year: 'numeric',
-                                                        month: 'short',
-                                                        day: 'numeric',
-                                                        hour: '2-digit',
-                                                        minute: '2-digit'
-                                                    })}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className={styles.commentContent}>
-                                        {comment.content}
-                                    </div>
-                                </div>
+                    {/* теги */}
+                    {article.tags && article.tags.length > 0 && (
+                        <div className={styles.tags}>
+                            {article.tags.map((tag, index) => (
+                                <span key={index} className={styles.tag}>#{tag}</span>
                             ))}
                         </div>
-                    ) : (
-                        <div className={styles.noComments}>
-                            <p>Пока нет комментариев</p>
-                            <p className={styles.noCommentsSubtitle}>
-                                {isAuthenticated 
-                                    ? 'Будьте первым, кто оставит комментарий!' 
-                                    : 'Войдите, чтобы оставить первый комментарий'
-                                }
-                            </p>
-                        </div>
                     )}
-                </section>
-            </article>
+
+                    {/* текст статьи */}
+                    <div className={styles.content}>
+                        {article.content.split('\n').map((paragraph, index) => (
+                            paragraph.trim() ? (
+                                <p key={index}>{paragraph}</p>
+                            ) : (
+                                <br key={index} />
+                            )
+                        ))}
+                    </div>
+
+                    {/* Футер статьи */}
+                    <footer className={styles.footer}>
+                        {/* Блок лайка */}
+                        <div className={styles.likeSection}>
+                            <button 
+                                className={`${styles.likeButton} ${
+                                    article.isLiked ? styles.liked : ''
+                                } ${likeLoading ? styles.loading : ''}`}
+                                onClick={handleLikeAction}
+                                disabled={!isAuthenticated || likeLoading || isLoading}
+                                title={article.isLiked ? "Убрать лайк" : "Поставить лайк"}
+                            >
+                                {likeLoading ? (
+                                    <span className={styles.likeLoading}></span>
+                                ) : article.isLiked ? (
+                                    <span className={styles.likeIcon}>❤️</span>
+                                ) : (
+                                    <span className={styles.likeIcon}>🤍</span>
+                                )}
+                                
+                                <span className={styles.likeText}>
+                                    {likeLoading ? 'Загрузка...' : 
+                                    article.isLiked ? 'Убрать лайк' : 'Оценить статью'}
+                                </span>
+                            </button>
+                            
+                            {!isAuthenticated && (
+                                <div className={styles.authHint}>
+                                    <span className={styles.loginHint}>
+                                        Войдите, чтобы оценить статью
+                                    </span>
+                                </div>
+                            )}
+                        </div>
+                    </footer>
+
+                    <section className={styles.commentsSection}>
+                        <div className={styles.commentsHeader}>
+                            <h3 className={styles.commentsTitle}>
+                                Комментарии {article.commentsCount > 0 && 
+                                `(${article.commentsCount})`}
+                            </h3>
+                            
+                            {isAuthenticated && (
+                                <button 
+                                    className={styles.addCommentButton}
+                                    onClick={() => setShowCommentForm(!showCommentForm)}
+                                >
+                                    {showCommentForm ? '✕ Отмена' : '+ Добавить комментарий'}
+                                </button>
+                            )}
+                        </div>
+
+        
+                        {showCommentForm && isAuthenticated && (
+                            <form className={styles.commentForm} onSubmit={handleAddComment}>
+                                <div className={styles.commentFormHeader}>
+                                    <h4>Ваш комментарий</h4>
+                                    {user?.avatar_url && (
+                                        <img 
+                                            src={user.avatar_url} 
+                                            alt="Ваш аватар"
+                                            className={styles.currentUserAvatar}
+                                        />
+                                    )}
+                                </div>
+                                
+                                <textarea
+                                    className={styles.commentTextarea}
+                                    value={newComment}
+                                    onChange={(e) => {
+                                        setNewComment(e.target.value);
+                                        setCommentError('');
+                                    }}
+                                    placeholder="Напишите ваш комментарий..."
+                                    rows="4"
+                                    maxLength="1000"
+                                    disabled={commentLoading}
+                                />
+                                
+                                {commentError && (
+                                    <div className={styles.commentError}>{commentError}</div>
+                                )}
+                                
+                                <div className={styles.commentFormActions}>
+                                    <div className={styles.commentLength}>
+                                        {newComment.length}/1000 символов
+                                    </div>
+                                    <div className={styles.commentButtons}>
+                                        <button 
+                                            type="button"
+                                            className={styles.cancelButton}
+                                            onClick={handleCancelComment}
+                                            disabled={commentLoading}
+                                        >
+                                            Отмена
+                                        </button>
+                                        <button 
+                                            type="submit"
+                                            className={styles.submitButton}
+                                            disabled={commentLoading || !newComment.trim()}
+                                        >
+                                            {commentLoading ? 'Отправка...' : 'Отправить'}
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        )}
+
+                        {!isAuthenticated && (
+                            <div className={styles.commentAuthPrompt}>
+                                <p>Войдите в систему, чтобы оставить комментарий</p>
+                                <button 
+                                    className={styles.loginButton}
+                                    onClick={() => navigate('/login')}
+                                >
+                                    Войти
+                                </button>
+                            </div>
+                        )}
+                        
+                        {/* комменты */}
+                        {comments.length > 0 ? (
+                            <div className={styles.commentsList}>
+                                {comments.map(comment => (
+                                    <div 
+                                        key={comment.id} 
+                                        className={styles.comment}
+                                    >
+                                        <div className={styles.commentHeader}>
+                                            <div className={styles.commentAuthor}>
+                                                {comment.author?.avatar && (
+                                                    <img 
+                                                        src={comment.author.avatar} 
+                                                        alt={`Аватар ${comment.author.userName}`}
+                                                        className={styles.commentAvatar}
+                                                        onError={(e) => {
+                                                            e.target.style.display = 'none';
+                                                        }}
+                                                    />
+                                                )}
+                                                <div className={styles.commentAuthorInfo}>
+                                                    <span className={styles.commentAuthorName}>
+                                                        {comment.author?.userName || 'Аноним'}
+                                                    </span>
+                                                    <span className={styles.commentDate}>
+                                                        {new Date(comment.createdAt).toLocaleDateString('ru-RU', {
+                                                            year: 'numeric',
+                                                            month: 'short',
+                                                            day: 'numeric',
+                                                            hour: '2-digit',
+                                                            minute: '2-digit'
+                                                        })}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={styles.commentContent}>
+                                            {comment.content}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className={styles.noComments}>
+                                <p>Пока нет комментариев</p>
+                                <p className={styles.noCommentsSubtitle}>
+                                    {isAuthenticated 
+                                        ? 'Будьте первым, кто оставит комментарий!' 
+                                        : 'Войдите, чтобы оставить первый комментарий'
+                                    }
+                                </p>
+                            </div>
+                        )}
+                    </section>
+                </article>
+            </div>
+        
         </div>
     );
 }
