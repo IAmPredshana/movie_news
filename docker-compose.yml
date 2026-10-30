@@ -33,6 +33,8 @@ services:
       DB_NAME: news
       REDIS_HOST: redis
       NODE_ENV: production
+    volumes:
+      - uploads_data:/app/uploads 
     depends_on:
       postgres:
         condition: service_healthy
@@ -43,8 +45,11 @@ services:
     build: ./front-end
     ports:
       - "80:80"
+    volumes:
+      - uploads_data:/usr/share/nginx/uploads
     depends_on:
       - backend
 
 volumes:
   postgres_data:
+  uploads_data:
