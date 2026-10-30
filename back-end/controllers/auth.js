@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { modLogin } from "../models/auth.js";
+import { modRegister, modLogin } from "../models/auth.js";
 import { redis } from "../redis.js";
 import {
   ACCESS_SECRET,
