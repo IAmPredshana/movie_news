@@ -1,8 +1,11 @@
-const SECRETKEY = "031f101587525c6a374e6524dd43cc75"
-const EXPIRES = "12h"
+const ACCESS_SECRET = "031f101587525c6a374e6524dd43cc75";
+const REFRESH_SECRET = "031f101587525c6a374e6524dd43cc75";
+
+const ACCESS_EXPIRES_IN = "15m"; // 15 минут
+const REFRESH_EXPIRES_IN = "7d";  // 7 дней
 
 function parseJwt(token) {
     return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString())
 }
 
-export { SECRETKEY, EXPIRES, parseJwt }
+export { ACCESS_SECRET, REFRESH_SECRET, ACCESS_EXPIRES_IN, REFRESH_EXPIRES_IN, parseJwt }

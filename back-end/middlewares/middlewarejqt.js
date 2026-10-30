@@ -1,5 +1,5 @@
-import jwt from "jsonwebtoken"
-import { SECRETKEY } from "../utils/jwt.js"
+import jwt from "jsonwebtoken";
+import { ACCESS_SECRET } from "../utils/jwt.js";
 
 // достаём токен из cookie FeelsGoodMan или иначе из заголовка Authorization
 function getToken(request) {
@@ -13,24 +13,25 @@ function getToken(request) {
 
 // middleware обязательной проверки токена
 function auth(request, response, next) {
-    const token = getToken(request)
-    if (!token) {
-        response.status(401)
-        response.set("Content-Type", "application/json")
-        response.send(JSON.stringify({ "answer": "false", "info": "Нет токена" }))
-        return
+    const authHeader = request.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        return response.status(401).json({ message: "Нет access токена" });
     }
+
+    const token = authHeader.split(" ")[1];
+
     try {
-        request.user = jwt.verify(token, SECRETKEY)
-        next()
+        const payload = jwt.verify(token, ACCESS_SECRET);
+        request.user = payload; // { id, role, iat, exp }
+        next();
     } catch (err) {
-        response.status(401)
-        response.set("Content-Type", "application/json")
-        response.send(JSON.stringify({ "answer": "false", "info": "Плохой токен" }))
+        // Важно: если токен просрочен, клиент должен попробовать обновить его через /api/refresh
+        return response.status(401).json({ message: "Access токен недействителен или просрочен" });
     }
 }
 
-// middleware необязательной проверки: если токен есть — распарсим, если нет — пропустим
+// middleware необязательной проверки: если токен есть распарсим, если нет пропустим
 function optionalAuth(request, response, next) {
     const token = getToken(request)
     if (token) {
