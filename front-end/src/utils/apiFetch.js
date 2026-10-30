@@ -1,6 +1,6 @@
 import { getAccessToken, setAccessToken, clearAccessToken } from './authToken.js';
 
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = '/api';
 
 // флаг для того чтобы знать есть запрос или нет (запрос на оплучение новго токена)
 let refreshPromise = null;
