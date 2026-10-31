@@ -32,7 +32,7 @@ app.use(express.json())
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
-app.get("/api/health", (request, response) => {
+app.get("/api/health", (request, response) => {Subnautica
     response.status(200).set("Content-Type", "application/json")
     response.send(JSON.stringify({ ok: true }))
 })
