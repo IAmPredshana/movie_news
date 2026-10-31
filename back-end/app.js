@@ -10,7 +10,6 @@ import { userRoutes } from "./routes/users.js"
 import { articleRoutes } from "./routes/articles.js"
 import { commentRoutes } from "./routes/comments.js"
 import { tagRoutes } from "./routes/tags.js"
-import { subscriptionRoutes } from "./routes/subscriptions.js"
 import { eventRoutes } from "./routes/events.js"
 
 const __filename = fileURLToPath(import.meta.url)
@@ -43,7 +42,6 @@ app.use("/api/users", userRoutes)
 app.use("/api/articles", articleRoutes)
 app.use("/api/comments", commentRoutes)
 app.use("/api/tags", tagRoutes)
-app.use("/api/subscriptions", subscriptionRoutes)
 app.use("/api/events", eventRoutes)
 
 app.listen(PORT, () => {
