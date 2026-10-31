@@ -296,7 +296,7 @@ export default function ArticleDetail() {
             <div className={styles.container}>
                 {/* btn назад */}
                 <button className={styles.backButton} onClick={goBack}>
-                    ← Назад к списку статей
+                    Назад к списку статей
                 </button>
 
                 
