@@ -120,7 +120,6 @@
   border-radius: 8px;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
   .calendarPage {
     padding: 16px;

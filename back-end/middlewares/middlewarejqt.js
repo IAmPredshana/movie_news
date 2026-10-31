@@ -27,11 +27,11 @@ function auth(request, response, next) {
         next();
     } catch (err) {
         // Важно: если токен просрочен, клиент должен попробовать обновить его через /api/refresh
-        return response.status(401).json({ message: "Access токен недействителен или просрочен" });
+        return response.status(401).json({ message: "ccess токен недействителен или просрочен" });
     }
 }
 
-// middleware необязательной проверки: если токен есть распарсим, если нет пропустим
+// middleware если токен есть, проверим, нет просто пропустим
 function optionalAuth(request, response, next) {
     const token = getToken(request)
     if (token) {

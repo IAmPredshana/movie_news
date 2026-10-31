@@ -61,8 +61,7 @@ async function login(request, response) {
 
     // Acsess token в HttpOnly!!!!!!
     response.cookie("refreshToken", refreshToken, {
-        httpOnly: true,
-        sameSite: "lax", 
+        httpOnly: true, 
         secure: false, // не https
         maxAge: 7 * 24 * 60 * 60 * 1000,
         path: '/',

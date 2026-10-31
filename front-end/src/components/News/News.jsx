@@ -19,7 +19,7 @@ export default function News() {
         const loadData = async () => {
             try {
                 const result = await getArticles({}); 
-                console.log('Сырой ответ от сервера:', result);
+                console.log('от сервера:', result);
 
                 if (result.success) {
                     let articlesArray = [];
@@ -33,7 +33,7 @@ export default function News() {
                     } else if (result.data?.result && Array.isArray(result.data.result)) {
                         articlesArray = result.data.result;
                     } else {
-                        console.warn('Не удалось найти массив статей в ответе!', result.data);
+                        
                     }
                     
                     console.log('Успешно извлечен массив длиной:', articlesArray.length);

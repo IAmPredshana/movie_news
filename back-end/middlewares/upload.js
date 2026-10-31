@@ -12,7 +12,7 @@ function saveRawFile(request, { folder, makeName }) {
         const rawName = request.get("X-Filename")
         if (!rawName) {
             request.resume()
-            resolve({ ok: false, info: "Не передан заголовок X-Filename" })
+            resolve({ ok: false, info: "не передан заголовок X-Filename" })
             return
         }
 
@@ -21,14 +21,14 @@ function saveRawFile(request, { folder, makeName }) {
             decodedName = decodeURIComponent(rawName)
         } catch {
             request.resume()
-            resolve({ ok: false, info: "Некорректный X-Filename" })
+            resolve({ ok: false, info: "некорректный X-Filename" })
             return
         }
 
         const ext = path.extname(decodedName).toLowerCase()
         if (!allowedExtensions.includes(ext)) {
             request.resume()
-            resolve({ ok: false, info: "Недопустимый формат файла" })
+            resolve({ ok: false, info: "оедопустимый формат файла" })
             return
         }
 
@@ -47,10 +47,10 @@ function saveRawFile(request, { folder, makeName }) {
             })
         })
         writeStream.on("error", () => {
-            resolve({ ok: false, info: "Ошибка при сохранении файла" })
+            resolve({ ok: false, info: "ошибка при сохранении файла" })
         })
         request.on("error", () => {
-            resolve({ ok: false, info: "Ошибка при чтении файла" })
+            resolve({ ok: false, info: "ошибка при чтении файла" })
         })
     })
 }
